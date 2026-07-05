@@ -44,7 +44,7 @@ def verificar_porta(ip, porta):
 
     except Exception as erro:
         print(f"Erro ao verificar a porta {porta}: {erro}")
-        return FalseE
+        return False
 
 
 if __name__ == "__main__":
