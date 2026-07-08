@@ -49,14 +49,32 @@ def verificar_porta(ip, porta):
 
 if __name__ == "__main__":
     print("=" * 60)
-    print(" PORT SCANNER v1.0 ")
+    print(" PORT SCANNER v1.1 ")
     print("Desenvolvido por Fernando José lôpo Santiago")
     print("=" * 60)
 
     ip = input("Digite o IP ou domínio: ")
 
-    portas = [
-        21, 22, 23, 25, 53, 80, 110, 143, 443, 3306, 8080 ]
+    entrada_portas = input("Digite as portas separadas por vírgula: ")
+    
+    portas_texto = entrada_portas.split(",")
+     
+    portas = []
+    
+    for porta_texto in portas_texto:
+         try:
+            porta = int(porta_texto)
+            
+            if 1<= porta <= 65535:
+                portas.append(porta)
+            else:
+             print(f"⚠️  {porta_texto} não é uma porta válida.")
+           
+         except ValueError:
+          print(f"⚠️  {porta_texto} não é uma porta válida.")
+    if not portas:
+        print("\n ⚠️ Nenhuma porta válida foi fornecida. Encerrando o programa.")
+        exit()
     
     inicio = time.time()
      
